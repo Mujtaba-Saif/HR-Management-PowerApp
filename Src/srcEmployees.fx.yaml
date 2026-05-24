@@ -1,0 +1,736 @@
+srcEmployees As screen:
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    MainContainer As groupContainer.verticalAutoLayoutContainer:
+        BorderStyle: =BorderStyle.None
+        Height: =App.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        LayoutMode: =LayoutMode.Auto
+        Width: =App.Width
+        ZIndex: =1
+
+        HeaderContainer_1 As groupContainer.horizontalAutoLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =varPrimary
+            FillPortions: =0
+            Height: =75
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutGap: =5
+            LayoutGridColumnMinWidth: =0
+            LayoutGridColumns: =6
+            LayoutGridRowMinHeight: =0
+            LayoutGridRows: =6
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =
+            Width: =Parent.Width
+            ZIndex: =1
+
+            Devises_1 As icon:
+                AccessibleLabel: |
+                    ="Go to Home Screen"
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =Color.White
+                DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                DisabledColor: =RGBA(225, 223, 221, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =varPrimary
+                FocusedBorderThickness: =1
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =varPrimaryHover
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.Home
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: |
+                    =Navigate(srcHome, ScreenTransition.Fade)
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =RGBA(16, 110, 190, 1)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                TabIndex: =0
+                Visible: |
+                    =true
+                ZIndex: =1
+
+            lbl_HR_Management_System_1 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                BorderColor: =RGBA(118, 0, 0, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =Color.White
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                Fill: =varPrimary
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =18
+                Text: ="Employees        "
+                Width: =Parent.Width*0.89
+                Wrap: =false
+                ZIndex: =2
+
+        SearchContainer As groupContainer.horizontalAutoLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            Fill: =RGBA(238, 239, 234, 1.0)
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutGap: |
+                =If(
+                    App.Width < 1200 && App.Height > App.Width,
+                    10,
+                    10
+                )
+            LayoutGridColumnMinWidth: =0
+            LayoutGridColumns: =6
+            LayoutGridRowMinHeight: =0
+            LayoutGridRows: =6
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMaxHeight: =75
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+            SearchIcon As icon.Search:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =varPrimary
+                DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                DisabledColor: =RGBA(225, 223, 221, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(16, 110, 190, 1)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.Search
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =RGBA(16, 110, 190, 1)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Width*0.12,
+                        App.Width < 1200,
+                        Parent.Width*0.1,
+                        Parent.Width*0.05
+                    )
+                ZIndex: =1
+
+            txtSearch As text:
+                AccessibleLabel: ="Search Employees"
+                BorderColor: =RGBA(245, 245, 245, 1)
+                BorderThickness: =2
+                Clear: =true
+                Color: =Color.Black
+                Default: =
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                DisabledFill: =RGBA(242, 242, 241, 0)
+                FillPortions: =1
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =Parent.Height*0.6
+                HintText: |-
+                    =If(
+                        App.Width < 600,
+                        "Search...",
+                        "Search Employees..."
+                    )
+                HoverBorderColor: =RGBA(16, 110, 190, 1)
+                HoverColor: =RGBA(50, 49, 48, 1)
+                HoverFill: =RGBA(255, 255, 255, 1)
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                PressedBorderColor: =RGBA(0, 120, 212, 1)
+                PressedColor: =RGBA(50, 49, 48, 1)
+                PressedFill: =RGBA(255, 255, 255, 1)
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =13
+                Width: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Width*0.4,
+                        App.Width < 1200,
+                        Parent.Width*0.4,
+                        Parent.Width*0.25
+                    )
+                ZIndex: =2
+
+            AdduserIcon As icon.AddUser:
+                AccessibleLabel: ="Add Employees"
+                AlignInContainer: =AlignInContainer.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =varPrimary
+                DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                DisabledColor: =RGBA(225, 223, 221, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(16, 110, 190, 1)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.AddUser
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: |-
+                    =ResetForm(Form1);
+                    Navigate(ScreenEmployeeForm, ScreenTransition.Fade)
+                PaddingBottom: =4
+                PaddingLeft: =4
+                PaddingRight: =4
+                PaddingTop: =4
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =RGBA(16, 110, 190, 1)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                TabIndex: =0
+                Width: =Parent.Width*0.1
+                ZIndex: =3
+
+        ContentContainer As groupContainer.horizontalAutoLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutGridColumnMinWidth: =0
+            LayoutGridColumns: =6
+            LayoutGridRowMinHeight: =0
+            LayoutGridRows: =6
+            LayoutMaxHeight: =Parent.Height*0.78
+            LayoutMaxWidth: =Parent.Width
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: |
+                =If(App.Width < 600, true, false)
+            ZIndex: =3
+
+            EmployeesContainer As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGridColumnMinWidth: =0
+                LayoutGridColumns: =6
+                LayoutGridRowMinHeight: =0
+                LayoutGridRows: =6
+                LayoutMaxHeight: =Parent.Height
+                LayoutMaxWidth: =Parent.Width
+                LayoutMinHeight: =Parent.Height
+                LayoutMinWidth: =Parent.Width
+                LayoutMode: =LayoutMode.Auto
+                ZIndex: =1
+
+                "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                    AccessibleLabel: ="Employees"
+                    BorderColor: =RGBA(245, 245, 245, 1)
+                    DelayItemLoading: =true
+                    Fill: =Color.White
+                    Items: |
+                        =If(
+                            IsBlank(txtSearch.Text),
+                            Employees,
+                            Filter(
+                                test,
+                                StartsWith(Title, txtSearch.Text) 
+                            )
+                        )
+                    Layout: =Layout.Vertical
+                    LayoutMaxHeight: =Parent.Height
+                    LayoutMaxWidth: =Parent.Width
+                    LayoutMinHeight: =16
+                    LayoutMinWidth: =16
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: |
+                        =If(
+                            App.Width < 600,  
+                            Parent.Height * 0.25,    
+                            App.Height < 400,
+                            Parent.Height*0.5,
+                                     
+                            App.Width < 1200 && App.Width < App.Height,
+                            Parent.Height * 0.25, 
+                            App.Width < 1200 && App.Width > App.Height,
+                            Parent.Height * 0.3,  
+                             
+                            Parent.Height * 0.3       
+                        )
+                    Transition: =Transition.Pop
+                    ZIndex: =1
+
+                    Title9 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Bold, FontWeight.Semibold)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =12
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Width*0.03,
+                                App.Height < 400,
+                                Parent.Width*0.02,
+                            
+                                App.Width < 1200 && App.Width < App.Height,
+                                Parent.Width*0.03,
+                                App.Width < 1200 && App.Width > App.Height,
+                                Parent.Width*0.025,
+                            
+                                Parent.Width*0.015
+                            )
+                        Text: =ThisItem.Title
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width*0.4
+                        X: =Parent.Width*0.15
+                        Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle6.Size * 1.8)) / 2
+                        ZIndex: =1
+
+                    Subtitle6 As label:
+                        Color: =RGBA(96, 94, 92, 1)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =12
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Width*0.025,
+                                App.Height < 400,
+                                Parent.Width*0.015,
+                            
+                                App.Width < 1200 && App.Width < App.Height,
+                                Parent.Width*0.025,
+                                 App.Width < 1200 && App.Width > App.Height,
+                                Parent.Width*0.02,
+                            
+                                Parent.Width*0.01
+                            )
+                        Text: =ThisItem.'Department'.Value
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Title9.Width
+                        X: =Title9.X
+                        Y: =Title9.Y + Title9.Height
+                        ZIndex: =2
+
+                    Separator9 As rectangle:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        FocusedBorderThickness: =10
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                        ZIndex: =4
+
+                    Rectangle9 As rectangle:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Fill: =RGBA(0, 120, 212, 1)
+                        Height: =Parent.TemplateHeight - Separator9.Height
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                        ZIndex: =5
+
+                    PersonIcon As icon.Person:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =varPrimary
+                        DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                        DisabledColor: =RGBA(225, 223, 221, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        FocusedBorderThickness: =0
+                        Height: |
+                            =If(
+                                App.Width < 600,  
+                                Parent.Height * 0.25,    
+                                App.Height < 400,
+                                Parent.Height*0.3,
+                                         
+                                App.Width < 1200 && App.Width < App.Height,
+                                Parent.Height * 0.25, 
+                                App.Width < 1200 && App.Width > App.Height,
+                                Parent.Height * 0.3,  
+                                 
+                                Parent.Height * 0.3       
+                            )
+                        HoverBorderColor: =RGBA(0, 0, 0, 0)
+                        HoverColor: =RGBA(16, 110, 190, 1)
+                        HoverFill: =RGBA(0, 0, 0, 0)
+                        Icon: =Icon.Person
+                        OnSelect: =Select(Parent)
+                        PressedBorderColor: =RGBA(0, 0, 0, 0)
+                        PressedColor: =RGBA(16, 110, 190, 1)
+                        PressedFill: =RGBA(0, 0, 0, 0)
+                        Width: =Parent.Width*0.16
+                        ZIndex: =6
+
+                    DeleteButton As button:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderStyle: =BorderStyle.None
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        DisabledFill: =RGBA(242, 242, 241, 0)
+                        Fill: =varPrimary
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Height*0.1,
+                                App.Height < 400,
+                                Parent.Height*0.15,
+                            
+                                App.Width < 1200 && App.Width < App.Height,
+                                Parent.Height*0.1,
+                                App.Width < 1200 && App.Width > App.Height,
+                                Parent.Height*0.13,
+                            
+                                Parent.Height*0.12
+                            )
+                        HoverBorderColor: =RGBA(0, 0, 0, 0)
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =RGBA(16, 110, 190, 1)
+                        OnSelect: |
+                            =UpdateContext({showDeleteConfirm: true, selectedEmployee: ThisItem})
+                        PressedBorderColor: =RGBA(0, 69, 120, 1)
+                        PressedColor: =RGBA(255, 255, 255, 1)
+                        PressedFill: =RGBA(16, 110, 190, 1)
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Size: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Width*0.027,
+                                App.Height < 400,
+                                Parent.Width*0.027,
+                                App.Width < 1200,
+                                Parent.Width*0.03,
+                                Parent.Width*0.02
+                            )
+                        Text: ="Delete"
+                        Width: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Width*0.25,
+                                App.Height < 400,
+                                Parent.Width*0.15,
+                                App.Width < 1200,
+                                Parent.Width*0.22,
+                                Parent.Width*0.12
+                            )
+                        X: |-
+                            =If(
+                                App.Width < 600,
+                                Parent.Width*0.65,
+                                App.Width < 1200,
+                                Parent.Width*0.7,
+                                Parent.Width*0.75
+                            )
+                        Y: =Title9.Y*1
+                        ZIndex: =7
+
+    ConDelete As groupContainer.horizontalAutoLayoutContainer:
+        BorderThickness: =1
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: |-
+            =If(
+                App.Width < 1200,
+                Parent.Height*0.3,
+                Parent.Height*0.4
+            )
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: |
+            =showDeleteConfirm
+        Width: |-
+            =If(
+                App.Width < 600,
+                Parent.Width*0.8,
+                App.Width < 1200,
+                Parent.Width*0.6,
+                Parent.Width*0.45
+            )
+        X: |-
+            =If(
+                App.Width < 600,
+                Parent.Width*0.1,
+                App.Width < 1200,
+                Parent.Width*0.2,
+                Parent.Width*0.275
+            )
+        Y: |-
+            =If(
+                App.Width < 1200,
+                Parent.Height*0.4,
+                Parent.Height*0.35
+            )
+        ZIndex: =2
+
+        txtContainer As groupContainer.horizontalAutoLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            Fill: =Color.White
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutGridColumnMinWidth: =0
+            LayoutGridColumns: =6
+            LayoutGridRowMinHeight: =0
+            LayoutGridRows: =6
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            ZIndex: =4
+
+            Label2 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =Color.Black
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =Parent.Height
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                Size: |
+                    =If(
+                        App.Width < 600 || App.Height < 400,
+                        Parent.Width*0.05,
+                        App.Width < 1200,
+                        Parent.Width*0.045,
+                        Parent.Width*0.045
+                    )
+                Text: ="Are you sure you want to delete?"
+                Width: =Parent.Width
+                ZIndex: =1
+
+        ButtonCntainer As groupContainer.horizontalAutoLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutGap: |-
+                =If(
+                    App.Width > 600 || App.Height > 400,
+                    Parent.Width*0.1,
+                    Parent.Width*0.2
+                )
+            LayoutGridColumnMinWidth: =0
+            LayoutGridColumns: =6
+            LayoutGridRowMinHeight: =0
+            LayoutGridRows: =6
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutMaxHeight: =0
+            LayoutMaxWidth: =0
+            LayoutMinHeight: =16
+            LayoutMinWidth: =16
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            ZIndex: =5
+
+            YesBut As button:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =Color.White
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                DisabledFill: =RGBA(242, 242, 241, 0)
+                Fill: =varPrimary
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Height*0.4,
+                        App.Height < 400,
+                        Parent.Height*0.7,
+                        App.Width < 1200,
+                        Parent.Height*0.3,
+                        Parent.Height*0.3
+                    
+                    )
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =RGBA(16, 110, 190, 1)
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: |
+                    =Remove(Employees, selectedEmployee);
+                    UpdateContext({showDeleteConfirm: false})
+                PressedBorderColor: =RGBA(0, 69, 120, 1)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(16, 110, 190, 1)
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Size: =15
+                Text: ="Yes"
+                Width: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Width*0.35,
+                        App.Height < 400,
+                        Parent.Width*0.35,
+                        App.Width < 1200,
+                        Parent.Width*0.3,
+                        Parent.Width*0.25
+                    
+                    )
+                ZIndex: =1
+
+            NoBut As button:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =Color.White
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                DisabledFill: =RGBA(242, 242, 241, 0)
+                Fill: =varPrimary
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Height*0.4,
+                        App.Height < 400,
+                        Parent.Height*0.7,
+                        App.Width < 1200,
+                        Parent.Height*0.3,
+                        Parent.Height*0.3
+                    
+                    )
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =RGBA(16, 110, 190, 1)
+                LayoutMaxHeight: =0
+                LayoutMaxWidth: =0
+                LayoutMinHeight: =16
+                LayoutMinWidth: =16
+                OnSelect: |
+                    =UpdateContext({showDeleteConfirm: false})
+                PressedBorderColor: =RGBA(0, 69, 120, 1)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(16, 110, 190, 1)
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Size: =15
+                Text: ="No"
+                Width: |-
+                    =If(
+                        App.Width < 600,
+                        Parent.Width*0.35,
+                        App.Height < 400,
+                        Parent.Width*0.35,
+                        App.Width < 1200,
+                        Parent.Width*0.3,
+                        Parent.Width*0.25
+                    
+                    )
+                ZIndex: =8
+
+    ButtonCanvas1_1 As Button:
+        AcceptsFocus: =true
+        AccessibleLabel: =""
+        Align: =Align.Center
+        Appearance: ='ButtonCanvas.Appearance'.Transparent
+        BasePaletteColor: =
+        BorderColor: =
+        BorderStyle: =BorderStyle.None
+        ContentLanguage: =""
+        DisplayMode: =DisplayMode.Edit
+        Font: =""
+        FontColor: =RGBA(255, 255, 255, 1)
+        FontItalic: =false
+        FontSize: =0
+        FontStrikethrough: =false
+        FontUnderline: =false
+        FontWeight: =FontWeight.Lighter
+        Height: =75
+        Icon: ="Dismiss"
+        IconRotation: =0
+        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+        Layout: ='ButtonCanvas.Layout'.IconOnly
+        OnSelect: =Exit()
+        TabIndex: =0
+        Text: ="Button"
+        Tooltip: =""
+        VerticalAlign: =""
+        Visible: =true
+        Width: |-
+            =If(
+                App.Width < 400,
+                60,
+                100
+            )
+        X: =Parent.Width-Self.Width
+        Y: =0
+        ZIndex: =3
+

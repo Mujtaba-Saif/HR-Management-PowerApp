@@ -1,0 +1,20 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |+
+        =Set(varPrimary, RGBA(11, 95, 255, 1));
+        Set(varPrimaryHover, RGBA(9, 76, 204, 1));
+        Set(varPageBg, RGBA(247, 249, 252, 1));
+        Set(varCardBg, RGBA(255, 255, 255, 1));
+        Set(varMenuVisible, false);
+        ClearCollect(test,'Employees')
+        
+    SizeBreakpoints: =[600, 1200]
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
